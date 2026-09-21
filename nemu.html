@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEMU - Lost & Found UMM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="Bruh-removebg-preview.png" alt="Logo NEMU" width="100" height="100">
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#lapor">Lapor Barang</a></li>
+                <li><a href="#cari">Cari Barang</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="beranda">
+            <h1>NEMU</h1>
+            <h2>Lost & Found Mahasiswa UMM</h2>
+            <p>
+                Platform untuk membantu mahasiswa Universitas Muhammadiyah Malang
+                menemukan kembali barang yang hilang dan mengembalikan barang yang ditemukan.
+            </p>
+
+            <a href="#lapor">Lapor Barang</a>
+            <a href="#cari">Cari Barang</a>
+        </section>
+
+        <section id="lapor">
+            <h2>Lapor Barang</h2>
+
+            <article>
+                <h3>Barang Hilang</h3>
+                <p>
+                    Laporkan barang yang kamu kehilangan agar mahasiswa lain
+                    dapat membantu menemukannya.
+                </p>
+                <a href="#">Buat Laporan</a>
+            </article>
+
+            <article>
+                <h3>Barang Ditemukan</h3>
+                <p>
+                    Menemukan barang milik orang lain di lingkungan UMM?
+                    Laporkan di sini agar dapat dikembalikan kepada pemiliknya.
+                </p>
+                <a href="#">Laporkan Barang Ditemukan</a>
+            </article>
+        </section>
+
+        <section id="cari">
+            <h2>Cari Barang</h2>
+
+            <form>
+                <label for="search">Cari barang:</label>
+                <input type="text" id="search" name="search" placeholder="Contoh: dompet, charger, KTM">
+
+                <label for="kategori">Kategori:</label>
+                <select id="kategori" name="kategori">
+                    <option value="">Semua kategori</option>
+                    <option value="elektronik">Elektronik</option>
+                    <option value="dokumen">Dokumen</option>
+                    <option value="aksesoris">Aksesoris</option>
+                    <option value="pakaian">Pakaian</option>
+                    <option value="lainnya">Lainnya</option>
+                </select>
+
+                <label for="lokasi">Lokasi:</label>
+                <input type="text" id="lokasi" name="lokasi" placeholder="Contoh: GKB 1">
+
+                <button type="submit">Cari</button>
+            </form>
+        </section>
+
+        <section id="tentang">
+            <h2>Tentang NEMU</h2>
+            <p>
+                NEMU adalah platform Lost & Found yang ditujukan untuk mahasiswa
+                Universitas Muhammadiyah Malang (UMM).
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 NEMU. Lost & Found Mahasiswa UMM.</p>
+    </footer>
+
+</body>
+</html>

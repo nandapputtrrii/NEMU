@@ -1,0 +1,252 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f7fa;
+    color: #222;
+}
+
+header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 8%;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo img {
+    display: block;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #5b4bdb;
+}
+
+
+main {
+    width: 85%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+section {
+    padding: 80px 0;
+}
+
+#beranda {
+    text-align: center;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#beranda h1 {
+    font-size: 64px;
+    color: #5b4bdb;
+    margin-bottom: 5px;
+}
+
+#beranda h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+#beranda p {
+    max-width: 650px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+#beranda a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #5b4bdb;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+#beranda a:hover {
+    background-color: #4638b5;
+}
+
+#lapor {
+    text-align: center;
+}
+
+#lapor h2,
+#cari h2,
+#tentang h2 {
+    font-size: 32px;
+    margin-bottom: 35px;
+}
+
+#lapor article {
+    background-color: white;
+    display: inline-block;
+    width: 45%;
+    min-height: 200px;
+    vertical-align: top;
+    margin: 10px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+#lapor article h3 {
+    margin-bottom: 15px;
+}
+
+#lapor article p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+#lapor article a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #5b4bdb;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+}
+
+#cari {
+    background-color: white;
+    padding: 50px;
+    border-radius: 12px;
+    margin-bottom: 50px;
+}
+
+#cari h2 {
+    text-align: center;
+}
+
+form {
+    max-width: 700px;
+    margin: auto;
+}
+
+form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+form button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #5b4bdb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #4638b5;
+}
+
+#tentang {
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 12px;
+    margin-bottom: 50px;
+}
+
+#tentang h2 {
+    text-align: center;
+}
+
+#tentang p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+#tentang h3 {
+    margin-bottom: 10px;
+}
+
+#tentang ul {
+    padding-left: 25px;
+}
+
+#tentang li {
+    margin-bottom: 8px;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #beranda h1 {
+        font-size: 48px;
+    }
+
+    #lapor article {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #cari,
+    #tentang {
+        padding: 30px 20px;
+    }
+}
