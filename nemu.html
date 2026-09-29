@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEMU - Lost & Found UMM</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-section {
+            animation: fadeUp 0.6s ease-out both;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-100 text-slate-800 font-sans leading-relaxed">
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-8">
+      <div class="logo">
+        <img src="Bruh-removebg-preview.png" alt="Logo NEMU" width="100" height="100" />
+      </div>
+
+      <nav>
+        <ul class="flex items-center gap-6 md:gap-8">
+          <li>
+            <a href="#beranda" class="group relative inline-block font-bold text-slate-800 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:text-violet-600 active:scale-95 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-violet-600 after:transition-transform after:duration-300 hover:after:scale-x-100">
+              Beranda
+            </a>
+          </li>
+          <li>
+            <a href="lapor-hilang.html" class="group relative inline-block font-bold text-slate-800 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:text-violet-600 active:scale-95 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-violet-600 after:transition-transform after:duration-300 hover:after:scale-x-100">
+              Lapor Barang
+            </a>
+          </li>
+          <li>
+            <a href="#cari" class="group relative inline-block font-bold text-slate-800 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:text-violet-600 active:scale-95 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-violet-600 after:transition-transform after:duration-300 hover:after:scale-x-100">
+              Cari Barang
+            </a>
+          </li>
+          <li>
+            <a href="#tentang" class="group relative inline-block font-bold text-slate-800 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:text-violet-600 active:scale-95 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-violet-600 after:transition-transform after:duration-300 hover:after:scale-x-100">
+              Tentang
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 py-8 md:px-8">
+    <section id="beranda" class="flex min-h-[calc(100vh-120px)] flex-col items-center justify-center text-center py-12">
+      <h1 class="mb-2 text-5xl font-bold text-violet-600 md:text-7xl">NEMU</h1>
+      <h2 class="mb-5 text-2xl md:text-3xl">Lost & Found Mahasiswa UMM</h2>
+      <p class="mb-8 max-w-2xl text-slate-600">
+        Platform untuk membantu mahasiswa Universitas Muhammadiyah Malang
+        menemukan kembali barang yang hilang dan mengembalikan barang yang ditemukan.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="lapor-hilang.html" class="rounded-lg bg-violet-600 px-6 py-3 font-semibold text-white transition hover:bg-violet-700">
+          Lapor Barang
+        </a>
+        <a href="#cari" class="rounded-lg bg-violet-600 px-6 py-3 font-semibold text-white transition hover:bg-violet-700">
+          Cari Barang
+        </a>
+      </div>
+    </section>
+
+    <section id="showcase" class="animate-section mt-20 mb-10 rounded-3xl bg-gradient-to-br from-violet-50 to-indigo-50 p-6 shadow-md md:p-10">
+      <div class="mb-8 flex items-center justify-between gap-4">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-violet-600">Recent Finds</p>
+          <h2 class="mt-2 text-3xl font-bold text-slate-800">Barang yang Ditemukan</h2>
+        </div>
+        <a href="#cari" class="hidden rounded-full border border-violet-200 bg-white px-4 py-2 text-sm font-semibold text-violet-700 transition hover:border-violet-300 hover:bg-violet-50 md:inline-flex">Lihat semua</a>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-3">
+        <article class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-md">
+          <div class="mb-4 flex h-24 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-100 to-lime-200 text-4xl">🔑</div>
+          <p class="text-sm font-semibold text-violet-600">Kunci Motor</p>
+          <h3 class="mt-1 text-xl font-bold text-slate-800">Kunci 3 Buah</h3>
+          <p class="mt-2 text-sm text-slate-600">Ditemukan 1 jam yang lalu di area perpustakaan pusat.</p>
+        </article>
+
+        <article class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-md">
+          <div class="mb-4 flex h-24 items-center justify-center rounded-xl bg-gradient-to-br from-amber-100 to-yellow-200 text-4xl">🎒</div>
+          <p class="text-sm font-semibold text-violet-600">Tas Sekolah</p>
+          <h3 class="mt-1 text-xl font-bold text-slate-800">Tas Biru</h3>
+          <p class="mt-2 text-sm text-slate-600">Ditemukan 3 jam yang lalu di depan GKB 1.</p>
+        </article>
+
+        <article class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-md">
+          <div class="mb-4 flex h-24 items-center justify-center rounded-xl bg-gradient-to-br from-sky-100 to-cyan-200 text-4xl">🧢</div>
+          <p class="text-sm font-semibold text-violet-600">Aksesoris</p>
+          <h3 class="mt-1 text-xl font-bold text-slate-800">Helm Putih</h3>
+          <p class="mt-2 text-sm text-slate-600">Ditemukan 1 hari yang lalu di parkiran kampus dekat Masjid AR Fachruddin.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="cari" class="animate-section mt-10 mb-10 rounded-2xl bg-white p-6 shadow-md md:p-10">
+      <h2 class="mb-8 text-center text-3xl font-bold">Cari Barang</h2>
+
+      <form class="mx-auto max-w-2xl">
+        <label for="search" class="mt-4 mb-2 block font-semibold">Cari barang:</label>
+        <input type="text" id="search" name="search" placeholder="Contoh: dompet, charger, KTM"
+          class="w-full rounded-md border border-slate-300 p-3 focus:border-violet-500 focus:outline-none" />
+
+        <label for="kategori" class="mt-4 mb-2 block font-semibold">Kategori:</label>
+        <select id="kategori" name="kategori"
+          class="w-full rounded-md border border-slate-300 p-3 focus:border-violet-500 focus:outline-none">
+          <option value="">Semua kategori</option>
+          <option value="elektronik">Elektronik</option>
+          <option value="dokumen">Dokumen</option>
+          <option value="aksesoris">Aksesoris</option>
+          <option value="pakaian">Pakaian</option>
+          <option value="lainnya">Lainnya</option>
+        </select>
+
+        <label for="lokasi" class="mt-4 mb-2 block font-semibold">Lokasi:</label>
+        <input type="text" id="lokasi" name="lokasi" placeholder="Contoh: GKB 1"
+          class="w-full rounded-md border border-slate-300 p-3 focus:border-violet-500 focus:outline-none" />
+
+        <button type="submit" class="mt-6 w-full rounded-md bg-violet-600 px-4 py-3 font-semibold text-white hover:bg-violet-700">
+          Cari
+        </button>
+      </form>
+    </section>
+
+    <section id="tentang" class="animate-section my-10 rounded-2xl bg-white p-6 shadow-md md:p-10">
+      <h2 class="mb-6 text-center text-3xl font-bold">Tentang NEMU</h2>
+      <p class="text-slate-600">
+        NEMU adalah platform Lost & Found yang ditujukan untuk mahasiswa
+        Universitas Muhammadiyah Malang (UMM).
+      </p>
+    </section>
+  </main>
+
+  <footer class="bg-slate-900 py-6 text-center text-white">
+    <p>&copy; 2026 NEMU. Lost & Found Mahasiswa UMM.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
