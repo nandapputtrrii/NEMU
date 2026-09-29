@@ -1,0 +1,25 @@
+{
+  "name": "nemu",
+  "version": "1.0.0",
+  "description": "Platform Lost &amp; Found khusus mahasiswa UMM",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nandapputtrrii/NEMU.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nandapputtrrii/NEMU/issues"
+  },
+  "homepage": "https://github.com/nandapputtrrii/NEMU#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
