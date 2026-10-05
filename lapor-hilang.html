@@ -42,30 +42,30 @@
       </section>
 
       <section class="rounded-3xl bg-white p-6 shadow-md md:p-8">
-        <form class="grid gap-6 md:grid-cols-2">
+        <form id="lapor-form" class="grid gap-6 md:grid-cols-2">
           <div class="md:col-span-2">
             <label for="nama" class="mb-2 block text-sm font-semibold text-slate-700">Nama Pelapor</label>
-            <input id="nama" type="text" placeholder="Contoh: Nanda Putri" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200" />
+            <input id="nama" name="namaPelapor" type="text" placeholder="Contoh: Nanda Putri" autocomplete="name" required class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200" />
           </div>
 
           <div>
             <label for="email" class="mb-2 block text-sm font-semibold text-slate-700">Email</label>
-            <input id="email" type="email" placeholder="namamu@student.umm.ac.id" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200" />
+            <input id="email" name="emailPelapor" type="email" placeholder="namamu@student.umm.ac.id" autocomplete="email" required class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200" />
           </div>
 
           <div>
             <label for="telepon" class="mb-2 block text-sm font-semibold text-slate-700">Nomor Telepon</label>
-            <input id="telepon" type="tel" placeholder="08xxxxxxxxxx" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200" />
+            <input id="telepon" name="teleponPelapor" type="tel" placeholder="08xxxxxxxxxx" autocomplete="tel" required class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200" />
           </div>
 
           <div>
             <label for="barang" class="mb-2 block text-sm font-semibold text-slate-700">Nama Barang</label>
-            <input id="barang" type="text" placeholder="Contoh: KTM, helm, tas, dompet" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200" />
+            <input id="barang" name="namaBarang" type="text" placeholder="Contoh: KTM, helm, tas, dompet" required class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200" />
           </div>
 
           <div>
             <label for="kategori" class="mb-2 block text-sm font-semibold text-slate-700">Kategori</label>
-            <select id="kategori" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200">
+            <select id="kategori" name="kategori" required class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200">
               <option value="">Pilih kategori</option>
               <option value="elektronik">Elektronik</option>
               <option value="dokumen">Dokumen</option>
@@ -77,26 +77,28 @@
 
           <div class="md:col-span-2">
             <label for="lokasi" class="mb-2 block text-sm font-semibold text-slate-700">Lokasi Terakhir Diketahui</label>
-            <input id="lokasi" type="text" placeholder="Contoh: Perpustakaan Pusat, GKB 1, Gedung E" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200" />
+            <input id="lokasi" name="lokasi" type="text" placeholder="Contoh: Perpustakaan Pusat, GKB 1, Gedung E" required class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200" />
           </div>
 
           <div>
             <label for="tanggal" class="mb-2 block text-sm font-semibold text-slate-700">Tanggal Kehilangan</label>
-            <input id="tanggal" type="date" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200" />
+            <input id="tanggal" name="tanggal" type="date" required class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200" />
           </div>
 
           <div>
             <label for="jam" class="mb-2 block text-sm font-semibold text-slate-700">Jam Kehilangan</label>
-            <input id="jam" type="time" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200" />
+            <input id="jam" name="jam" type="time" required class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200" />
           </div>
 
           <div class="md:col-span-2">
             <label for="deskripsi" class="mb-2 block text-sm font-semibold text-slate-700">Deskripsi Barang</label>
-            <textarea id="deskripsi" rows="5" placeholder="Jelaskan ciri-ciri barang, warna, merek, dan detail penting lainnya..." class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"></textarea>
+            <textarea id="deskripsi" name="deskripsi" rows="5" placeholder="Opsional: jelaskan ciri-ciri barang, warna, merek, dan detail penting lainnya..." class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"></textarea>
           </div>
 
+          <div id="lapor-pesan" class="hidden md:col-span-2 rounded-xl p-4 text-sm" role="status" aria-live="polite"></div>
+
           <div class="md:col-span-2 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <button type="submit" class="rounded-xl bg-violet-600 px-6 py-3 font-semibold text-white shadow-md transition hover:bg-violet-700 hover:shadow-lg active:scale-95">
+            <button id="kirim-laporan" type="submit" class="rounded-xl bg-violet-600 px-6 py-3 font-semibold text-white shadow-md transition hover:bg-violet-700 hover:shadow-lg active:scale-95 disabled:cursor-wait disabled:opacity-60">
               Kirim Laporan
             </button>
 
@@ -111,5 +113,13 @@
     <footer class="mt-12 bg-slate-900 py-6 text-center text-sm text-slate-300">
       &copy; 2026 NEMU. Lost & Found Mahasiswa UMM.
     </footer>
+    <div id="loading-overlay" class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-900/40 px-4"
+      role="status" aria-live="polite" aria-label="Mengirim laporan">
+      <div class="flex flex-col items-center gap-4 rounded-2xl bg-white px-8 py-6 text-center shadow-xl">
+        <span class="h-12 w-12 animate-spin rounded-full border-4 border-violet-200 border-t-violet-600" aria-hidden="true"></span>
+        <span class="font-semibold text-slate-800">Mengirim laporan...</span>
+      </div>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>

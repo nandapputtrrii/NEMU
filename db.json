@@ -1,0 +1,103 @@
+{
+  "barang": [
+    {
+      "id": "1",
+      "nama": "Kunci Motor",
+      "kategori": "Aksesoris",
+      "lokasi": "Perpustakaan Pusat",
+      "tanggal": "2026-10-04",
+      "deskripsi": "Kunci motor dengan gantungan warna hitam.",
+      "status": "Ditemukan"
+    },
+    {
+      "id": "2",
+      "nama": "Tas Biru",
+      "kategori": "Tas",
+      "lokasi": "GKB 1",
+      "tanggal": "2026-10-03",
+      "deskripsi": "Tas berwarna biru dengan beberapa buku di dalamnya.",
+      "status": "Ditemukan"
+    },
+    {
+      "id": "3",
+      "nama": "Helm Putih",
+      "kategori": "Aksesoris",
+      "lokasi": "Parkiran dekat Masjid AR Fachruddin",
+      "tanggal": "2026-10-02",
+      "deskripsi": "Helm putih polos dengan sedikit goresan di bagian belakang.",
+      "status": "Ditemukan"
+    },
+    {
+      "id": "4",
+      "nama": "KTM",
+      "kategori": "Dokumen",
+      "lokasi": "GKB 3",
+      "tanggal": "2026-10-01",
+      "deskripsi": "Kartu Tanda Mahasiswa UMM.",
+      "status": "Hilang"
+    },
+    {
+      "id": "5",
+      "nama": "Botol Minum",
+      "kategori": "Lainnya",
+      "lokasi": "Perpustakaan Pusat",
+      "tanggal": "2026-10-05",
+      "deskripsi": "Botol minum stainless warna hitam tertinggal di meja baca.",
+      "status": "Ditemukan"
+    },
+    {
+      "id": "6",
+      "nama": "Charger USB-C",
+      "kategori": "Elektronik",
+      "lokasi": "GKB 2",
+      "tanggal": "2026-10-05",
+      "deskripsi": "Charger USB-C warna putih ditemukan di ruang kelas.",
+      "status": "Ditemukan"
+    },
+    {
+      "id": "7",
+      "nama": "Payung Hitam",
+      "kategori": "Lainnya",
+      "lokasi": "Kantin Kampus",
+      "tanggal": "2026-10-04",
+      "deskripsi": "Payung lipat warna hitam ditemukan dekat meja kantin.",
+      "status": "Ditemukan"
+    },
+    {
+      "id": "8",
+      "nama": "Dompet Cokelat",
+      "kategori": "Aksesoris",
+      "lokasi": "Masjid AR Fachruddin",
+      "tanggal": "2026-10-03",
+      "deskripsi": "Dompet kecil warna cokelat ditemukan di area wudu.",
+      "status": "Ditemukan"
+    },
+    {
+      "nama": "Sepatu",
+      "kategori": "Pakaian",
+      "lokasi": "Musholla",
+      "tanggal": "2026-10-08",
+      "jam": "17:49",
+      "deskripsi": "Mboh",
+      "status": "Hilang",
+      "namaPelapor": "Shafi",
+      "emailPelapor": "aku@gmail.com",
+      "teleponPelapor": "08231812",
+      "id": "aWJw-qIlckQ"
+    },
+    {
+      "nama": "Baju",
+      "kategori": "Pakaian",
+      "lokasi": "Kelas",
+      "tanggal": "2026-10-05",
+      "jam": "18:07",
+      "deskripsi": "Biru",
+      "status": "Hilang",
+      "namaPelapor": "Nanda",
+      "emailPelapor": "aku@gmail.com",
+      "teleponPelapor": "214314",
+      "id": "pjzlbQB5X3I"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
