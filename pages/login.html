@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - NEMU</title>
+  <link rel="icon" type="image/png" href="../assets/Bruh-removebg-preview.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;700;800&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/tailwind-config.js"></script>
+</head>
+
+<body class="min-h-screen bg-ink font-sans text-paper antialiased">
+  <header class="border-b border-paper/20">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-8">
+      <a href="nemu.html" class="flex items-center gap-3">
+        <img src="../assets/Bruh-removebg-preview.png" alt="Logo NEMU" class="h-10 w-auto rounded bg-paper p-1" />
+        <span class="font-display text-2xl font-extrabold tracking-tight">NEMU</span>
+      </a>
+      <a href="nemu.html" class="text-sm font-medium text-paper/70 hover:text-gold-500">Kembali ke beranda</a>
+    </div>
+  </header>
+
+  <main class="mx-auto flex min-h-[calc(100vh-65px)] max-w-6xl items-center justify-center px-4 py-12">
+    <section class="relative w-full max-w-md rounded-xl border-2 border-paper bg-paper p-7 pt-10 text-ink md:p-9 md:pt-12">
+      <span class="absolute right-5 top-4 h-3.5 w-3.5 rounded-full border-2 border-ink bg-ink" aria-hidden="true"></span>
+
+      <p class="font-mono text-sm text-umm-600">Khusus mahasiswa UMM</p>
+      <h1 class="mt-2 font-display text-4xl font-extrabold">Masuk ke NEMU</h1>
+      <p class="mt-2 text-ink/70">Pakai NIM dan PIC UMM untuk melapor atau mengklaim barang.</p>
+
+      <div id="login-notice" class="mt-5 hidden border-l-4 border-gold-500 bg-gold-500/10 p-4 text-sm" role="status" aria-live="polite"></div>
+
+      <div class="my-6 border-t-2 border-dashed border-ink/30"></div>
+
+      <form id="login-form" class="space-y-5">
+        <div>
+          <label for="nim" class="mb-2 block text-sm font-bold">NIM UMM</label>
+          <input id="nim" name="nim" type="text" autocomplete="username" required placeholder="Masukkan NIM"
+            class="w-full rounded-lg border-2 border-ink/30 bg-white px-4 py-3 placeholder:text-ink/40 focus:border-umm-600 focus:outline-none" />
+        </div>
+        <div>
+          <label for="pic" class="mb-2 block text-sm font-bold">PIC UMM</label>
+          <input id="pic" name="pic" type="password" autocomplete="current-password" required placeholder="Masukkan PIC"
+            class="w-full rounded-lg border-2 border-ink/30 bg-white px-4 py-3 placeholder:text-ink/40 focus:border-umm-600 focus:outline-none" />
+        </div>
+        <p id="login-error" class="hidden rounded-lg bg-umm-100 p-3 text-sm text-umm-800" role="alert"></p>
+        <button type="submit"
+          class="w-full rounded-lg border-2 border-ink bg-umm-600 px-5 py-3 font-bold text-white transition hover:bg-umm-700">
+          Masuk
+        </button>
+      </form>
+
+      <p class="mt-5 text-xs leading-relaxed text-ink/60">
+        Ini login mock untuk prototipe. Hanya NIM yang disimpan di browser ini (localStorage). PIC tidak disimpan dan tidak diverifikasi ke layanan UMM.
+      </p>
+    </section>
+  </main>
+
+  <script src="../js/auth.js"></script>
+  <script>
+    const parameters = new URLSearchParams(window.location.search);
+    const notice = document.querySelector("#login-notice");
+    const reason = parameters.get("reason");
+
+    if (reason === "claim") {
+      notice.textContent = "Login dengan akun UMM dulu untuk mengklaim barang.";
+      notice.classList.remove("hidden");
+    } else if (reason === "report") {
+      notice.textContent = "Login dengan akun UMM dulu untuk melaporkan barang.";
+      notice.classList.remove("hidden");
+    }
+
+    const loginForm = document.querySelector("#login-form");
+    const loginError = document.querySelector("#login-error");
+
+    loginForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const nim = document.querySelector("#nim").value.trim();
+      const pic = document.querySelector("#pic").value.trim();
+
+      if (!nim || !pic) {
+        loginError.textContent = "NIM dan PIC UMM wajib diisi.";
+        loginError.classList.remove("hidden");
+        return;
+      }
+
+      try {
+        window.NemuAuth.loginUser(nim);
+        const requestedPage = parameters.get("next") || "nemu.html";
+        const destination = new URL(requestedPage, window.location.href);
+
+        if (destination.origin !== window.location.origin || destination.pathname.endsWith("/login.html")) {
+          window.location.href = "nemu.html";
+          return;
+        }
+
+        window.location.href = destination.href;
+      } catch (error) {
+        console.error("Gagal menyimpan sesi login:", error);
+        loginError.textContent = "Login tidak bisa disimpan di browser ini. Periksa pengaturan penyimpanan browser.";
+        loginError.classList.remove("hidden");
+      }
+    });
+  </script>
+</body>
+</html>

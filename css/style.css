@@ -45,7 +45,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #5b4bdb;
+    color: #c8102e;
 }
 
 
@@ -70,7 +70,7 @@ section {
 
 #beranda h1 {
     font-size: 64px;
-    color: #5b4bdb;
+    color: #c8102e;
     margin-bottom: 5px;
 }
 
@@ -88,7 +88,7 @@ section {
 #beranda a {
     display: inline-block;
     text-decoration: none;
-    background-color: #5b4bdb;
+    background-color: #c8102e;
     color: white;
     padding: 12px 24px;
     border-radius: 8px;
@@ -96,7 +96,7 @@ section {
 }
 
 #beranda a:hover {
-    background-color: #4638b5;
+    background-color: #8a0e23;
 }
 
 #lapor {
