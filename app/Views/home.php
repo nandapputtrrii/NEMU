@@ -99,8 +99,8 @@ function e(mixed $value): string
         </a>
         <nav aria-label="Menu utama">
             <a href="#showcase">Barang ditemukan</a>
-            <a href="pages/lapor-hilang.html">Lapor kehilangan</a>
-            <a href="pages/lapor-temuan.html">Lapor temuan</a>
+            <a href="pages/lapor-hilang.php">Lapor kehilangan</a>
+            <a href="pages/lapor-temuan.php">Lapor temuan</a>
             <a href="#tentang">Cara kerja</a>
         </nav>
     </header>
@@ -112,8 +112,8 @@ function e(mixed $value): string
             <p class="hero-copy">NEMU membantu mahasiswa UMM melapor, mencari, dan mengambil lagi barang yang hilang di kampus.</p>
             <div class="actions">
                 <a class="button" href="#cari">Cari barang</a>
-                <a class="button secondary" href="pages/lapor-hilang.html">Lapor kehilangan</a>
-                <a class="button gold" href="pages/lapor-temuan.html">Lapor temuan</a>
+                <a class="button secondary" href="pages/lapor-hilang.php">Lapor kehilangan</a>
+                <a class="button gold" href="pages/lapor-temuan.php">Lapor temuan</a>
             </div>
         </section>
 

@@ -37,16 +37,16 @@
 <body class="bg-paper font-sans text-ink antialiased" data-require-login="true">
   <header class="sticky top-0 z-50 border-b-2 border-ink bg-paper/95 backdrop-blur">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-8">
-      <a href="nemu.html" class="flex items-center gap-3">
+      <a href="nemu.php" class="flex items-center gap-3">
         <img src="../assets/Bruh-removebg-preview.png" alt="Logo NEMU" class="h-10 w-auto" />
         <span class="font-display text-2xl font-extrabold tracking-tight">NEMU</span>
       </a>
       <nav id="main-nav" class="absolute left-0 right-0 top-full border-b-2 border-ink bg-paper px-4 py-3 md:static md:border-0 md:bg-transparent md:p-0" aria-label="Menu utama">
         <ul class="flex flex-col items-start gap-1 text-sm font-medium md:flex-row md:items-center md:gap-8 max-md:[&_a]:inline-block max-md:[&_a]:py-2">
-          <li><a href="nemu.html#cari" class="hover:text-umm-600">Cari barang</a></li>
-          <li><a href="lapor-hilang.html" class="text-umm-600 underline decoration-2 underline-offset-8">Lapor hilang</a></li>
-          <li><a href="lapor-temuan.html" class="hover:text-umm-600">Lapor temuan</a></li>
-          <li><a href="nemu.html#tentang" class="hover:text-umm-600">Cara kerja</a></li>
+          <li><a href="nemu.php#cari" class="hover:text-umm-600">Cari barang</a></li>
+          <li><a href="lapor-hilang.php" class="text-umm-600 underline decoration-2 underline-offset-8">Lapor hilang</a></li>
+          <li><a href="lapor-temuan.php" class="hover:text-umm-600">Lapor temuan</a></li>
+          <li><a href="nemu.php#tentang" class="hover:text-umm-600">Cara kerja</a></li>
         </ul>
       </nav>
       <button id="menu-toggle" type="button" class="rounded-lg border-2 border-ink p-2 md:hidden" aria-label="Buka menu" aria-expanded="false" aria-controls="main-nav">
@@ -65,7 +65,7 @@
           Isi formulir ini supaya mahasiswa lain bisa melihat laporanmu dan barangmu lebih mudah ditemukan.
         </p>
       </div>
-      <a href="lapor-temuan.html" class="w-fit rounded-lg border-2 border-ink px-5 py-2.5 font-bold hover:bg-ink hover:text-paper">Justru menemukan barang?</a>
+      <a href="lapor-temuan.php" class="w-fit rounded-lg border-2 border-ink px-5 py-2.5 font-bold hover:bg-ink hover:text-paper">Justru menemukan barang?</a>
     </section>
 
     <section class="rounded-xl border-2 border-ink bg-white p-6 md:p-10">

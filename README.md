@@ -18,9 +18,11 @@ NEMU adalah platform Lost & Found khusus mahasiswa UMM untuk membantu pengguna m
 - `index.php` — entry point aplikasi PHP MVC
 - `app/Models/BarangModel.php` — membaca data barang dari `db.json`
 - `app/Controllers/HomeController.php` — menangani logika pencarian, filter, dan ringkasan
+- `app/Controllers/PagesController.php` — memilih View untuk halaman login, pencarian, dan pelaporan
 - `app/Views/home.php` — halaman utama aplikasi
 - `app/Views/partials/item-card.php` — komponen kartu item laporan
-- `pages/` — halaman statis seperti login, pencarian, dan formulir pelaporan
+- `app/Views/pages/` — tampilan PHP untuk login, pencarian, dan formulir pelaporan
+- `pages/` — entry point PHP yang meneruskan permintaan halaman ke `PagesController`
 - `db.json` — database lokal berbasis JSON
 
 ## Persyaratan
@@ -51,10 +53,10 @@ php -S localhost:8000
 5. Buka browser dan akses:
 
 - `http://localhost:8000` — halaman utama aplikasi MVC (`index.php`)
-- `http://localhost:8000/pages/login.html` — halaman login
-- `http://localhost:8000/pages/nemu.html` — halaman pencarian dan pelaporan barang
-- `http://localhost:8000/pages/lapor-hilang.html` — formulir laporan barang hilang
-- `http://localhost:8000/pages/lapor-temuan.html` — formulir laporan barang ditemukan
+- `http://localhost:8000/pages/login.php` — halaman login
+- `http://localhost:8000/pages/nemu.php` — halaman pencarian dan pelaporan barang
+- `http://localhost:8000/pages/lapor-hilang.php` — formulir laporan barang hilang
+- `http://localhost:8000/pages/lapor-temuan.php` — formulir laporan barang ditemukan
 
 ## Catatan penting
 - Data barang utama disimpan di `db.json` dengan struktur `barang`.

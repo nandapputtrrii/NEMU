@@ -56,8 +56,8 @@
       <nav id="main-nav" class="absolute left-0 right-0 top-full border-b-2 border-ink bg-paper px-4 py-3 md:static md:border-0 md:bg-transparent md:p-0" aria-label="Menu utama">
         <ul class="flex flex-col items-start gap-1 text-sm font-medium md:flex-row md:items-center md:gap-8 max-md:[&_a]:inline-block max-md:[&_a]:py-2">
           <li><a href="#cari" class="hover:text-umm-600">Cari barang</a></li>
-          <li><a href="lapor-hilang.html" class="hover:text-umm-600">Lapor Kehilangan</a></li>
-          <li><a href="lapor-temuan.html" class="hover:text-umm-600">Lapor Temuan</a></li>
+          <li><a href="lapor-hilang.php" class="hover:text-umm-600">Lapor Kehilangan</a></li>
+          <li><a href="lapor-temuan.php" class="hover:text-umm-600">Lapor Temuan</a></li>
           <li><a href="#tentang" class="hover:text-umm-600">Cara Kerja</a></li>
         </ul>
       </nav>
@@ -81,8 +81,8 @@
       </p>
       <div class="mt-8 flex flex-wrap justify-center gap-4">
         <a href="#cari" class="rounded-lg border-2 border-ink bg-umm-600 px-6 py-3 font-bold text-white transition hover:bg-umm-700">Cari barang</a>
-        <a href="lapor-hilang.html" class="rounded-lg border-2 border-ink bg-paper px-6 py-3 font-bold transition hover:bg-ink hover:text-paper">Lapor Kehilangan</a>
-        <a href="lapor-temuan.html" class="rounded-lg border-2 border-ink bg-gold-500 px-6 py-3 font-bold transition hover:opacity-90">Lapor Temuan</a>
+        <a href="lapor-hilang.php" class="rounded-lg border-2 border-ink bg-paper px-6 py-3 font-bold transition hover:bg-ink hover:text-paper">Lapor Kehilangan</a>
+        <a href="lapor-temuan.php" class="rounded-lg border-2 border-ink bg-gold-500 px-6 py-3 font-bold transition hover:opacity-90">Lapor Temuan</a>
       </div>
     </section>
 

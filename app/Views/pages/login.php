@@ -15,11 +15,11 @@
 <body class="min-h-screen bg-ink font-sans text-paper antialiased">
   <header class="border-b border-paper/20">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-8">
-      <a href="nemu.html" class="flex items-center gap-3">
+      <a href="nemu.php" class="flex items-center gap-3">
         <img src="../assets/Bruh-removebg-preview.png" alt="Logo NEMU" class="h-10 w-auto rounded bg-paper p-1" />
         <span class="font-display text-2xl font-extrabold tracking-tight">NEMU</span>
       </a>
-      <a href="nemu.html" class="text-sm font-medium text-paper/70 hover:text-gold-500">Kembali ke beranda</a>
+      <a href="nemu.php" class="text-sm font-medium text-paper/70 hover:text-gold-500">Kembali ke beranda</a>
     </div>
   </header>
 
@@ -89,11 +89,11 @@
 
       try {
         window.NemuAuth.loginUser(nim);
-        const requestedPage = parameters.get("next") || "nemu.html";
+        const requestedPage = parameters.get("next") || "nemu.php";
         const destination = new URL(requestedPage, window.location.href);
 
-        if (destination.origin !== window.location.origin || destination.pathname.endsWith("/login.html")) {
-          window.location.href = "nemu.html";
+        if (destination.origin !== window.location.origin || destination.pathname.endsWith("/login.php")) {
+          window.location.href = "nemu.php";
           return;
         }
 

@@ -1,14 +1,10 @@
 const API_URL = "http://localhost:3000/barang";
 
-/* ============================================================
-   PENGATURAN FOTO
-   ============================================================ */
 const FOTO_TIPE_DIIZINKAN = ["image/jpeg", "image/png", "image/webp"];
 const FOTO_UKURAN_MAKS = 5 * 1024 * 1024; // 5 MB sebelum dikecilkan
 const FOTO_SISI_MAKS = 800; // px, sisi terpanjang setelah dikecilkan
 const FOTO_KUALITAS = 0.7;
 
-/* Kecilkan foto di browser lalu ubah jadi data URL (base64) */
 function kompresFoto(file) {
     return new Promise(function (resolve, reject) {
         const urlSementara = URL.createObjectURL(file);
@@ -53,9 +49,6 @@ function normalisasiNomorWa(nomor) {
     return hasil.length >= 10 && hasil.length <= 15 ? hasil : "";
 }
 
-/* ============================================================
-   FORM LAPOR BARANG (lapor-hilang.html & lapor-temuan.html)
-   ============================================================ */
 const laporForm = document.querySelector("#lapor-form");
 
 if (laporForm) {
@@ -248,7 +241,7 @@ if (laporForm) {
 }
 
 /* ============================================================
-   DAFTAR BARANG + DETAIL (nemu.html)
+   DAFTAR BARANG + DETAIL (nemu.php)
    ============================================================ */
 const barangContainer = document.querySelector("#barang-container");
 const tombolLihatSemua = document.querySelector("#lihat-semua-barang");
@@ -268,12 +261,12 @@ function idBarang(barang) {
 }
 
 /* Foto barang, atau placeholder kalau tidak ada foto */
-function buatFotoBarang(barang, kelasUkuran) {
+function buatFotoBarang(barang, kelasUkuran, eager = false) {
     if (barang.foto) {
         const gambar = document.createElement("img");
         gambar.src = barang.foto;
         gambar.alt = `Foto ${barang.nama || "barang"}`;
-        gambar.loading = "lazy";
+        gambar.loading = eager ? "eager" : "lazy";
         gambar.className = `${kelasUkuran} w-full object-cover`;
         return gambar;
     }
@@ -361,7 +354,7 @@ if (detailModal) {
 
         if (!window.NemuAuth.requireLogin(
             "claim",
-            `nemu.html?claim=${encodeURIComponent(idBarang(barangDetail))}`
+            `nemu.php?claim=${encodeURIComponent(idBarang(barangDetail))}`
         )) {
             return;
         }
@@ -398,7 +391,7 @@ if (tombolLihatSemua) {
 }
 
 async function ambilBarang() {
-    // Halaman tanpa daftar barang (mis. lapor-hilang.html) tidak perlu memanggil API.
+    // Halaman tanpa daftar barang (mis. lapor-hilang.php) tidak perlu memanggil API.
     if (!barangContainer) {
         return;
     }
@@ -480,13 +473,13 @@ function tampilkanBarang(data) {
         return;
     }
 
-    barangDitampilkan.forEach(function (barang) {
-        barangContainer.appendChild(buatKartuBarang(barang));
+    barangDitampilkan.forEach(function (barang, index) {
+        barangContainer.appendChild(buatKartuBarang(barang, index < 3));
     });
 }
 
 /* Kartu barang berbentuk label/tag. Klik kartu untuk melihat detail. */
-function buatKartuBarang(barang) {
+function buatKartuBarang(barang, eagerFoto) {
     const ditemukan = adalahDitemukan(barang);
 
     const card = document.createElement("article");
@@ -498,7 +491,7 @@ function buatKartuBarang(barang) {
 
     const fotoWrap = document.createElement("div");
     fotoWrap.className = "border-b-2 border-ink";
-    fotoWrap.appendChild(buatFotoBarang(barang, "aspect-[4/3]"));
+    fotoWrap.appendChild(buatFotoBarang(barang, "aspect-[4/3]", eagerFoto));
 
     const hole = document.createElement("span");
     hole.className = "absolute right-4 top-3 h-3 w-3 rounded-full border-2 border-ink bg-paper";

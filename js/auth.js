@@ -49,7 +49,7 @@
             next: target,
             reason: reason || "login"
         });
-        window.location.href = `login.html?${query.toString()}`;
+        window.location.href = `login.php?${query.toString()}`;
         return false;
     }
 
@@ -75,10 +75,10 @@
             link.addEventListener("click", function (event) {
                 event.preventDefault();
                 logoutUser();
-                window.location.href = "nemu.html";
+                window.location.href = "nemu.php";
             });
         } else {
-            link.href = `login.html?${new URLSearchParams({ next: currentPageTarget() }).toString()}`;
+            link.href = `login.php?${new URLSearchParams({ next: currentPageTarget() }).toString()}`;
             link.textContent = "Masuk";
         }
 
