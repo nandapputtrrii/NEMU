@@ -1,69 +1,60 @@
 # NEMU
-NEMU adalah platform Lost & Found khusus mahasiswa UMM untuk membantu pengguna melaporkan barang hilang atau barang yang ditemukan, serta mencari data laporan dengan cepat.
 
-## Fitur utama
-- Pencarian laporan barang berdasarkan kata kunci
-- Filter berdasarkan kategori dan status (`Hilang` / `Ditemukan`)
-- Ringkasan laporan secara real-time
-- Tampilan daftar barang berbasis MVC di PHP
-- Halaman penunjang untuk login dan pelaporan barang
-
-## Stack yang digunakan
-- PHP 8.x
-- Node.js dan npm
-- JSON Server
-- Tailwind CSS
-
-## Struktur proyek
-- `index.php` — entry point aplikasi PHP MVC
-- `app/Models/BarangModel.php` — membaca data barang dari `db.json`
-- `app/Controllers/HomeController.php` — menangani logika pencarian, filter, dan ringkasan
-- `app/Controllers/PagesController.php` — memilih View untuk halaman login, pencarian, dan pelaporan
-- `app/Views/home.php` — halaman utama aplikasi
-- `app/Views/partials/item-card.php` — komponen kartu item laporan
-- `app/Views/pages/` — tampilan PHP untuk login, pencarian, dan formulir pelaporan
-- `pages/` — entry point PHP yang meneruskan permintaan halaman ke `PagesController`
-- `db.json` — database lokal berbasis JSON
+NEMU adalah platform Lost & Found untuk mahasiswa UMM. Aplikasi Laravel ini menyediakan halaman pencarian barang dan fitur CRUD laporan barang dengan database SQLite.
 
 ## Persyaratan
-- PHP 8.x terinstall di sistem
-- Node.js dan npm terinstall
-- Browser modern
 
-## Cara menjalankan project
-1. Buka terminal di folder proyek.
-2. Install dependency Node.js:
+- PHP 8.3 atau lebih baru
+- Composer
+- Ekstensi PHP SQLite (`pdo_sqlite` dan `sqlite3`)
 
-```sh
-npm install
-```
+## Menjalankan aplikasi
 
-3. Jalankan JSON Server untuk membaca data dari `db.json`:
+Dari direktori root project, jalankan:
 
 ```sh
-npx json-server db.json --watch --port 3000
+composer install
+test -f .env || cp .env.example .env
+touch database/database.sqlite
+php artisan key:generate
+php artisan migrate
+php artisan storage:link
+php artisan serve
 ```
 
-4. Jalankan server PHP untuk aplikasi utama:
+Pastikan koneksi database di `.env` menggunakan:
+
+```dotenv
+DB_CONNECTION=sqlite
+```
+
+Buka `http://127.0.0.1:8000`.
+
+- `/` — halaman utama NEMU dengan ringkasan, pencarian, filter, dan laporan terbaru.
+- `/lapor-hilang` — formulir laporan barang hilang.
+- `/lapor-temuan` — formulir laporan barang ditemukan.
+- `/laporan` — daftar laporan dengan aksi edit dan hapus.
+
+Data laporan lama tidak disertakan di Git karena berisi informasi kontak pelapor. Untuk memindahkan salinan lokal `legacy/db.json` ke SQLite, jalankan `php artisan db:seed --class=LegacyBarangSeeder`. Importer mempertahankan ID sumber dan aman dijalankan ulang.
+
+## Struktur data
+
+Model `App\Models\Barang` menyimpan nama, kategori, lokasi, tanggal, jam, deskripsi, status, identitas kontak pelapor, foto, dan lokasi penyimpanan. Migration tabel `barangs` dijalankan dengan:
 
 ```sh
-php -S localhost:8000
+php artisan migrate
 ```
 
-5. Buka browser dan akses:
+Foto baru disimpan pada disk publik Laravel. Setelah menjalankan `php artisan storage:link`, file dapat ditampilkan melalui halaman NEMU.
 
-- `http://localhost:8000` — halaman utama aplikasi MVC (`index.php`)
-- `http://localhost:8000/pages/login.php` — halaman login
-- `http://localhost:8000/pages/nemu.php` — halaman pencarian dan pelaporan barang
-- `http://localhost:8000/pages/lapor-hilang.php` — formulir laporan barang hilang
-- `http://localhost:8000/pages/lapor-temuan.php` — formulir laporan barang ditemukan
+## Test
 
-## Catatan penting
-- Data barang utama disimpan di `db.json` dengan struktur `barang`.
-- API frontend yang digunakan biasanya tersedia di `http://localhost:3000/barang`.
-- Pastikan JSON Server dan PHP server berjalan bersamaan agar fitur pencarian dan laporan dapat berfungsi dengan benar.
+```sh
+php artisan test
+```
 
-## Troubleshooting
-- Jika data tidak muncul, pastikan perintah `npx json-server ...` sudah berjalan dengan benar.
-- Jika halaman tidak bisa diakses, pastikan `php -S localhost:8000` dijalankan dari root proyek.
-- Jika halaman static tidak dapat memuat data, cek apakah port `3000` tidak dipakai proses lain.
+Test mencakup operasi Eloquent `create`, `all`, dan `find`, filter laporan, formulir laporan hilang/temuan, validasi, serta siklus tambah-edit-hapus.
+
+## Kode NEMU versi sebelumnya
+
+Kode PHP dan JSON Server sebelumnya tetap disimpan di `legacy/` sebagai arsip. Aplikasi aktif di root project menggunakan Laravel.
