@@ -157,12 +157,12 @@ class BarangController extends Controller
     private function validatedData(Request $request): array
     {
         return $request->validate([
-            'nama' => ['required', 'string', 'max:255'],
+            'nama' => ['required', 'string', 'max:100'],
             'kategori' => ['required', 'string', 'max:100'],
             'lokasi' => ['required', 'string', 'max:255'],
             'tanggal' => ['required', 'date'],
             'jam' => ['nullable', 'date_format:H:i'],
-            'deskripsi' => ['nullable', 'string', 'max:5000'],
+            'deskripsi' => ['required', 'string', 'max:5000'],
             'status' => ['required', 'in:Hilang,Ditemukan'],
             'nama_pelapor' => ['required', 'string', 'max:255'],
             'telepon' => ['required', 'string', 'regex:/^(?:\+?62|0)8[0-9]{7,12}$/'],

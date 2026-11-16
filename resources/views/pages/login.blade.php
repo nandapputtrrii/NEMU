@@ -4,70 +4,32 @@
 
 @section('content')
     <section class="panel auth-card">
-        <p class="eyebrow">Khusus mahasiswa UMM</p>
+        <p class="eyebrow">Akun NEMU</p>
         <h1>Masuk ke NEMU</h1>
-        <p>Gunakan NIM dan PIC UMM untuk masuk ke prototipe NEMU.</p>
+        <p>Gunakan NIM dan password akun NEMU yang sudah kamu daftarkan.</p>
 
-        <div class="notice" id="login-notice" role="status" hidden></div>
+        @if (session('status'))
+            <div class="notice" role="status">{{ session('status') }}</div>
+        @endif
 
-        <form id="login-form" data-login-path="{{ route('login') }}">
+        <form action="{{ route('login.store') }}" method="POST">
+            @csrf
             <div class="field">
-                <label for="nim">NIM UMM</label>
-                <input id="nim" name="nim" type="text" autocomplete="username" required placeholder="Masukkan NIM">
+                <label for="nim">NIM</label>
+                <input id="nim" name="nim" type="text" value="{{ old('nim') }}" maxlength="30" autocomplete="username" required autofocus placeholder="Masukkan NIM">
+                @error('nim') <p class="error">{{ $message }}</p> @enderror
             </div>
             <div class="field">
-                <label for="pic">PIC UMM</label>
-                <input id="pic" name="pic" type="password" autocomplete="current-password" required placeholder="Masukkan PIC">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Masukkan password">
+                @error('password') <p class="error">{{ $message }}</p> @enderror
             </div>
-            <p class="error" id="login-error" role="alert" hidden></p>
+            <div class="field">
+                <label><input name="remember" type="checkbox" value="1"> Ingat saya</label>
+            </div>
             <button class="button" type="submit">Masuk</button>
         </form>
 
-        <p class="auth-note">Login ini masih berupa mock untuk prototipe. NIM disimpan di browser, PIC tidak disimpan maupun diverifikasi ke layanan UMM.</p>
+        <p class="auth-note">Belum punya akun? <a href="{{ route('register') }}">Daftar di sini</a>. Akun ini dikelola lokal oleh NEMU dan tidak diverifikasi ke sistem UMM.</p>
     </section>
-
-    <script>
-        const parameters = new URLSearchParams(window.location.search);
-        const notice = document.querySelector("#login-notice");
-        const reason = parameters.get("reason");
-
-        if (reason === "claim") {
-            notice.textContent = "Masuk dulu untuk menghubungi pelapor melalui WhatsApp.";
-            notice.hidden = false;
-        } else if (reason === "report") {
-            notice.textContent = "Masuk dengan akun UMM dulu untuk melaporkan barang.";
-            notice.hidden = false;
-        }
-
-        document.querySelector("#login-form").addEventListener("submit", function (event) {
-            event.preventDefault();
-            const nim = document.querySelector("#nim").value.trim();
-            const pic = document.querySelector("#pic").value.trim();
-            const error = document.querySelector("#login-error");
-
-            if (!nim || !pic) {
-                error.textContent = "NIM dan PIC UMM wajib diisi.";
-                error.hidden = false;
-                return;
-            }
-
-            try {
-                localStorage.setItem("nemuUser", JSON.stringify({ isLoggedIn: true, nim }));
-                const requestedPage = parameters.get("next") || "/";
-                const destination = new URL(requestedPage, window.location.origin);
-
-                const loginPath = new URL(document.querySelector("#login-form").dataset.loginPath, window.location.origin).pathname;
-                if (destination.origin !== window.location.origin || destination.pathname === loginPath) {
-                    window.location.assign("/");
-                    return;
-                }
-
-                window.location.assign(destination.href);
-            } catch (loginError) {
-                console.error("Gagal menyimpan sesi login:", loginError);
-                error.textContent = "Login tidak bisa disimpan. Periksa pengaturan penyimpanan browser.";
-                error.hidden = false;
-            }
-        });
-    </script>
 @endsection

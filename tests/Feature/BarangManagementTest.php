@@ -3,8 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\Barang;
+use App\Models\User;
 use Database\Seeders\LegacyBarangSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class BarangManagementTest extends TestCase
@@ -48,6 +50,8 @@ class BarangManagementTest extends TestCase
 
     public function test_barang_report_can_be_created_updated_and_deleted(): void
     {
+        $this->actingAs(User::factory()->create());
+
         $this->post(route('laporan.store'), $this->reportData())
             ->assertRedirect(route('home'));
 
@@ -72,6 +76,8 @@ class BarangManagementTest extends TestCase
 
     public function test_report_forms_set_the_requested_lost_or_found_status(): void
     {
+        $this->actingAs(User::factory()->create());
+
         $this->get(route('laporan.lost.create'))
             ->assertOk()
             ->assertSee('value="Hilang"', false);
@@ -90,13 +96,21 @@ class BarangManagementTest extends TestCase
         $this->get(route('login'))
             ->assertOk()
             ->assertSee('Masuk ke NEMU')
-            ->assertSee('NIM UMM')
-            ->assertSee('PIC UMM')
-            ->assertSee('masih berupa mock');
+            ->assertSee('label for="nim">NIM</label>', false)
+            ->assertSee('name="password"', false)
+            ->assertSee(route('login.store'))
+            ->assertSee(route('register'));
+
+        $this->get(route('register'))
+            ->assertOk()
+            ->assertSee('Buat akun')
+            ->assertSee('password_confirmation');
     }
 
     public function test_report_requires_valid_contact_and_item_details(): void
     {
+        $this->actingAs(User::factory()->create());
+
         $this->from(route('laporan.lost.create'))
             ->post(route('laporan.store'), [])
             ->assertRedirect(route('laporan.lost.create'))
@@ -111,6 +125,101 @@ class BarangManagementTest extends TestCase
             ]);
 
         $this->assertDatabaseCount('barangs', 0);
+    }
+
+    public function test_create_and_update_require_description_and_limit_name_to_100_characters(): void
+    {
+        $this->actingAs(User::factory()->create());
+
+        $validData = $this->reportData();
+        $tooLongName = str_repeat('a', 101);
+
+        $this->from(route('laporan.lost.create'))
+            ->post(route('laporan.store'), array_merge($validData, [
+                'deskripsi' => '',
+            ]))
+            ->assertRedirect(route('laporan.lost.create'))
+            ->assertSessionHasErrors(['deskripsi']);
+
+        $this->from(route('laporan.lost.create'))
+            ->post(route('laporan.store'), array_merge($validData, [
+                'nama' => $tooLongName,
+            ]))
+            ->assertRedirect(route('laporan.lost.create'))
+            ->assertSessionHasErrors(['nama']);
+
+        $barang = Barang::create($validData);
+
+        $this->from(route('laporan.edit', $barang))
+            ->put(route('laporan.update', $barang), array_merge($validData, [
+                'deskripsi' => '',
+            ]))
+            ->assertRedirect(route('laporan.edit', $barang))
+            ->assertSessionHasErrors(['deskripsi']);
+
+        $this->from(route('laporan.edit', $barang))
+            ->put(route('laporan.update', $barang), array_merge($validData, [
+                'nama' => $tooLongName,
+            ]))
+            ->assertRedirect(route('laporan.edit', $barang))
+            ->assertSessionHasErrors(['nama']);
+
+        $this->assertSame('Dompet', $barang->fresh()->nama);
+        $this->assertSame('Dompet warna hitam.', $barang->fresh()->deskripsi);
+    }
+
+    public function test_registration_stores_a_hashed_password_and_authenticates_the_user(): void
+    {
+        $this->post(route('register.store'), [
+            'name' => 'Nanda',
+            'nim' => '20240001',
+            'password' => 'password-aman',
+            'password_confirmation' => 'password-aman',
+        ])->assertRedirect(route('home'));
+
+        $user = User::query()->where('nim', '20240001')->firstOrFail();
+
+        $this->assertAuthenticatedAs($user);
+        $this->assertTrue(Hash::check('password-aman', $user->password));
+        $this->assertNotSame('password-aman', $user->password);
+    }
+
+    public function test_login_rejects_unknown_credentials_and_accepts_a_registered_account(): void
+    {
+        $user = User::factory()->create([
+            'nim' => '20240002',
+            'password' => 'password-aman',
+        ]);
+
+        $this->post(route('login.store'), [
+            'nim' => 'nim-tidak-terdaftar',
+            'password' => 'sembarang',
+        ])->assertSessionHasErrors('nim');
+
+        $this->assertGuest();
+
+        $this->post(route('login.store'), [
+            'nim' => '20240002',
+            'password' => 'password-aman',
+        ])->assertRedirect(route('home'));
+
+        $this->assertAuthenticatedAs($user);
+    }
+
+    public function test_report_crud_requires_authentication_and_logout_ends_the_session(): void
+    {
+        $this->get(route('laporan.index'))
+            ->assertRedirect(route('login'));
+
+        $this->get(route('laporan.lost.create'))
+            ->assertRedirect(route('login'));
+
+        $user = User::factory()->create();
+        $this->actingAs($user)
+            ->post(route('logout'))
+            ->assertRedirect(route('home'));
+
+        $this->assertGuest();
     }
 
     public function test_legacy_reports_are_imported_without_creating_duplicates(): void

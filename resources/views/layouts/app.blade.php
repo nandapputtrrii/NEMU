@@ -117,10 +117,19 @@
             </a>
             <nav class="nav" aria-label="Menu utama">
                 <a href="{{ route('home') }}#cari">Cari barang</a>
-                <a href="{{ route('laporan.lost.create') }}">Lapor kehilangan</a>
-                <a href="{{ route('laporan.found.create') }}">Lapor temuan</a>
-                <a href="{{ route('laporan.index') }}">Kelola laporan</a>
-                <a class="auth-link" id="auth-link" href="{{ route('login') }}">Masuk</a>
+                @auth
+                    <a href="{{ route('laporan.lost.create') }}">Lapor kehilangan</a>
+                    <a href="{{ route('laporan.found.create') }}">Lapor temuan</a>
+                    <a href="{{ route('laporan.index') }}">Kelola laporan</a>
+                    <span>{{ auth()->user()->nim }}</span>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button class="auth-link" type="submit">Keluar</button>
+                    </form>
+                @else
+                    <a class="auth-link" href="{{ route('login') }}">Masuk</a>
+                    <a href="{{ route('register') }}">Daftar</a>
+                @endauth
             </nav>
         </div>
     </header>
@@ -137,6 +146,5 @@
         <p><strong>NEMU</strong></p>
         <p class="muted">&copy; {{ date('Y') }} NEMU. Semoga barangmu cepat ketemu.</p>
     </footer>
-    <script src="{{ asset('js/nemu-auth.js') }}"></script>
 </body>
 </html>
