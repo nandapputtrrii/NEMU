@@ -20,7 +20,8 @@
                 <span>Disimpan di: {{ $barang->penyimpanan }}</span>
             @endif
         </div>
-        @if ($barang->telepon)
+        @auth
+            @if ($barang->telepon)
             @php
                 $nomorWa = preg_replace('/\D+/', '', $barang->telepon);
                 if (str_starts_with($nomorWa, '0')) {
@@ -30,6 +31,9 @@
             @if (strlen($nomorWa) >= 10 && strlen($nomorWa) <= 15)
                 <a class="button secondary" style="margin-top: 14px" href="https://wa.me/{{ $nomorWa }}" target="_blank" rel="noopener noreferrer">Hubungi pelapor</a>
             @endif
+            @endif
+        @else
+            <a class="button secondary" style="margin-top: 14px" href="{{ route('login') }}">Masuk untuk menghubungi pelapor</a>
         @endif
     </div>
 </article>

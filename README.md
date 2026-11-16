@@ -34,8 +34,12 @@ Buka `http://127.0.0.1:8000`.
 - `/lapor-hilang` — formulir laporan barang hilang.
 - `/lapor-temuan` — formulir laporan barang ditemukan.
 - `/laporan` — daftar laporan dengan aksi edit dan hapus.
+- `/register` — membuat akun NEMU lokal dengan NIM dan password.
+- `/login` — masuk menggunakan akun NEMU yang sudah terdaftar.
 
 Data laporan lama tidak disertakan di Git karena berisi informasi kontak pelapor. Untuk memindahkan salinan lokal `legacy/db.json` ke SQLite, jalankan `php artisan db:seed --class=LegacyBarangSeeder`. Importer mempertahankan ID sumber dan aman dijalankan ulang.
+
+Akun lokal menyimpan password dalam bentuk hash Laravel. Pendaftaran tidak memverifikasi NIM ke sistem UMM. Pengunjung dapat melihat halaman utama dan mencari laporan; pengguna yang masuk dapat membuat, mengubah, dan menghapus laporan.
 
 ## Struktur data
 
